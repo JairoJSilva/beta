@@ -1,0 +1,42 @@
+services:
+  n22-beta:
+    image: "${TAG}"
+      #image: beta:5.08.18
+    container_name: n22-beta
+    hostname: n22-beta
+    restart: always
+    ports:
+      - "50022:8080"
+
+    volumes:
+      #- /home/sftpupload/imagens/_data/:/var/www/html/vempostovirtual/  
+      - /home/imagens/:/var/www/html/vempostovirtual/
+    networks:
+      producao:
+        ipv4_address: 172.18.2.2
+
+
+  n22-beta-b1:
+    image: "${TAG}"
+    #image: beta:5.08.18
+    container_name: n22-beta-b1
+    hostname: n22-beta-b1
+    restart: always
+    ports:
+      - "50010:8080"
+
+    volumes:
+      #- /home/sftpupload/imagens/_data/:/var/www/html/vempostovirtual/  
+      - /home/imagens/:/var/www/html/vempostovirtual/
+    networks:
+      producao:
+        ipv4_address: 172.18.2.10
+
+networks:
+  producao:
+    external: true 
+
+volumes:
+  vempostovirtual:
+    external: true
+
